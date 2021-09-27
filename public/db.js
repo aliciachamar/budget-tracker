@@ -3,7 +3,7 @@ let budgetVersion;
 
 const request = indexedDB.open("BudgetDB", budgetVersion || 1);
 
-request.onupgradeneeded = e => {
+request.onupgradeneeded = function (e) {
   const { oldVersion } = e;
   const newVersion = e.newVersion || db.version;
   console.log(`DB version updated from ${oldVersion} to ${newVersion}.`);
@@ -15,7 +15,7 @@ request.onupgradeneeded = e => {
   }
 };
 
-request.onerror = e => {
+request.onerror = function (e) {
   console.log(`Oh dear! ${e.target.errorCode}`);
 };
 
@@ -47,14 +47,14 @@ checkDB = () => {
   }
 };
 
-request.onsuccess = e => {
+request.onsuccess = function (e) {
   db = e.target.result;
   if (navigator.onLine) {
     checkDB();
   }
 };
 
-saveRecord = (rec) => {
+saveRecord = function (rec) {
   let transaction = db.transaction(["BudgetStore"], "readwrite");
   const store = transaction.objectStoreNames("BudgetStore");
   store.add(rec);
