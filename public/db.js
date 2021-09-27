@@ -19,7 +19,7 @@ request.onerror = function (e) {
   console.log(`Oh dear! ${e.target.errorCode}`);
 };
 
-checkDB = () => {
+function checkDB() {
   let transaction = db.transaction(["BudgetStore"], "readwrite");
   const store = transaction.objectStoreNames("BudgetStore");
   const getAll = store.getAll();
@@ -54,7 +54,7 @@ request.onsuccess = function (e) {
   }
 };
 
-saveRecord = function (rec) {
+function saveRecord(rec) {
   let transaction = db.transaction(["BudgetStore"], "readwrite");
   const store = transaction.objectStoreNames("BudgetStore");
   store.add(rec);
