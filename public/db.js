@@ -21,7 +21,7 @@ request.onerror = function (e) {
 
 function checkDB() {
   let transaction = db.transaction(["BudgetStore"], "readwrite");
-  const store = transaction.objectStoreNames("BudgetStore");
+  const store = transaction.objectStore("BudgetStore");
   const getAll = store.getAll();
 
   getAll.onsuccess = () => {
@@ -38,7 +38,7 @@ function checkDB() {
         .then(res => {
           if (res.length !== 0) {
             transaction = db.transaction(["BudgetStore"], "readwrite");
-            const currentStore = transaction.objectStoreNames("BudgetStore");
+            const currentStore = transaction.objectStore("BudgetStore");
             currentStore.clear();
             console.log("Store cleared.");
           }
@@ -56,7 +56,7 @@ request.onsuccess = function (e) {
 
 function saveRecord(rec) {
   let transaction = db.transaction(["BudgetStore"], "readwrite");
-  const store = transaction.objectStoreNames("BudgetStore");
+  const store = transaction.objectStore("BudgetStore");
   store.add(rec);
 };
 
