@@ -2,7 +2,7 @@
 
   ## Description
 
-  This application functions online and offline and tracks budget items for the user. 
+  This application tracks budget items for the user, while functioning online and offline as a progressive web app. 
 
 
   ## Table of Contents 
@@ -22,7 +22,7 @@
 
   ## Usage
 
-  The user will be prompted with several questions related to the application for which the readme is being generated. Please answer these with as much detail as possible to generate a proper readme. 
+  The user can add budget items to their budget by entering the name of the transaction, the amount of the transaction, and whether the transaction was for income or an expense. Once the user has entered a transaction, a chart appears below the form to show the user's current budget items. 
 
 
   ## License
@@ -49,6 +49,4 @@
 
   ## Screenshots
 
-  ![Terminal Screenshot](https://raw.githubusercontent.com/aliciachamar/readme-generator/main/assets/images/terminal-screenshot.PNG)
-
-  ![Finished Readme Screenshot](https://raw.githubusercontent.com/aliciachamar/readme-generator/main/assets/images/finished-screenshot.PNG)
+  ![Main Screenshot](https://raw.githubusercontent.com/aliciachamar/readme-generator/main/assets/images/main-screenshot.PNG)
