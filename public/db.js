@@ -24,7 +24,7 @@ function checkDB() {
   const store = transaction.objectStore("BudgetStore");
   const getAll = store.getAll();
 
-  getAll.onsuccess = () => {
+  getAll.onsuccess = function () {
     if (getAll.result.length > 0) {
       fetch("/api/transaction/bulk", {
         method: "POST",
@@ -34,18 +34,18 @@ function checkDB() {
           "Content-Type": "application/json",
         }
       })
-        .then(response => response.json)
-        .then(res => {
+        .then((response) => response.json)
+        .then((res) => {
           if (res.length !== 0) {
             transaction = db.transaction(["BudgetStore"], "readwrite");
             const currentStore = transaction.objectStore("BudgetStore");
             currentStore.clear();
             console.log("Store cleared.");
           }
-        })
+        });
     }
-  }
-};
+  };
+}
 
 request.onsuccess = function (e) {
   db = e.target.result;
@@ -54,8 +54,8 @@ request.onsuccess = function (e) {
   }
 };
 
-function saveRecord(rec) {
-  let transaction = db.transaction(["BudgetStore"], "readwrite");
+const saveRec = (rec) => {
+  const transaction = db.transaction(["BudgetStore"], "readwrite");
   const store = transaction.objectStore("BudgetStore");
   store.add(rec);
 };
